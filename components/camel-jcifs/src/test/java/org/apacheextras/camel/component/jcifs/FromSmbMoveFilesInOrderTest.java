@@ -98,6 +98,7 @@ public class FromSmbMoveFilesInOrderTest extends BaseSmbTestSupport {
             final byte[] content = stringContent.getBytes();
             fileContents.add(stringContent);
 
+            expect(sourceFile.exists()).andReturn(true).anyTimes();
             expect(sourceFile.isDirectory()).andReturn(false).anyTimes();
             expect(sourceFile.getName()).andReturn("hello" + i + ".txt").anyTimes();
             expect(sourceFile.getContentLength()).andReturn(content.length).anyTimes();
