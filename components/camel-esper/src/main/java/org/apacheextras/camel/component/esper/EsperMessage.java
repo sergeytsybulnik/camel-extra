@@ -23,6 +23,7 @@
 package org.apacheextras.camel.component.esper;
 
 import com.espertech.esper.client.EventBean;
+import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultMessage;
 
 /**
@@ -40,7 +41,8 @@ public class EsperMessage extends DefaultMessage {
      * @param newEvent EventBean
      * @param oldEvent EventBean
      */
-    public EsperMessage(EventBean newEvent, EventBean oldEvent) {
+    public EsperMessage(EventBean newEvent, EventBean oldEvent, CamelContext camelContext) {
+        super(camelContext);
         this.newEvent = newEvent;
         this.oldEvent = oldEvent;
         // use new event as the default body
@@ -72,6 +74,6 @@ public class EsperMessage extends DefaultMessage {
      */
     @Override
     public DefaultMessage newInstance() {
-        return new EsperMessage(newEvent, oldEvent);
+        return new EsperMessage(newEvent, oldEvent, getCamelContext());
     }
 }

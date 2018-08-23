@@ -121,7 +121,7 @@ public class EsperEndpoint extends DefaultEndpoint {
      */
     public Exchange createExchange(EventBean newEventBean, EventBean oldEventBean, EPStatement statement) {
         Exchange exchange = createExchange(ExchangePattern.InOnly);
-        Message in = new EsperMessage(newEventBean, oldEventBean);
+        Message in = new EsperMessage(newEventBean, oldEventBean, getCamelContext());
         in.setHeader("CamelEsperName", name);
         in.setHeader("CamelEsperStatement", statement);
         if (pattern != null) {
@@ -216,7 +216,7 @@ public class EsperEndpoint extends DefaultEndpoint {
 	/**
      * Sets is Esper consumer listener must be create
      *
-     * @param pattern
+     * @param listen
      */
 	public void setListen(boolean listen) {
 		this.listen = listen;

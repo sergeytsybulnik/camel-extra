@@ -74,6 +74,11 @@ public class VtdXmlXPathBuilder implements Expression, Predicate, NamespaceAware
         this.namespaces = namespaces;
     }
 
+    @Override
+    public Map<String, String> getNamespaces() {
+        return namespaces;
+    }
+
     /**
      * Registers the namespace prefix and URI with the builder so that the
      * prefix can be used in XPath expressions
