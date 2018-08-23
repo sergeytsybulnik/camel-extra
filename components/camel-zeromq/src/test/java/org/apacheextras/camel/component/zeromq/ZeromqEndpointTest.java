@@ -25,6 +25,7 @@ import java.net.URISyntaxException;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.camel.impl.DefaultCamelContext;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,6 +47,7 @@ public class ZeromqEndpointTest {
     @Before
     public void before() throws URISyntaxException {
         endpoint = new ZeromqEndpoint("zeromq:tcp://localhost:1234?socketType=PUBLISH", "tcp://localhost:1234?socketType=PUBLISH", new ZeromqComponent());
+        endpoint.setCamelContext(new DefaultCamelContext());
     }
 
     @Test
